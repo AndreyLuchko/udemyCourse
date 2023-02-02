@@ -1,0 +1,13 @@
+.navbar-brand{
+    margin-right: -15px;
+    
+}
+.navbar-nav {
+    column-gap: 2em;
+}
+
+.navbar-nav .nav-link.active,
+.nav-link:hover {
+    -webkit-text-stroke: 0.5px #000000;
+  color:#ffffff;
+}

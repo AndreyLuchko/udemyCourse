@@ -1,0 +1,9 @@
+
+.card {
+    border: none;
+    border-radius: 0;
+}
+
+.card-body {
+    margin-top: 5em;
+}
