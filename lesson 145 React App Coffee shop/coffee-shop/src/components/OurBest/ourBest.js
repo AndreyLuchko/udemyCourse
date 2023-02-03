@@ -16,9 +16,9 @@ const OurBest = ({data}) => {
     })
 
     return (
-        <div className="ourBest" style={{'background': `#ffffff url(${ourBestBg}) no-repeat center`, 'background-size': 'cover' }}>
-            <h3 className='text-center' style={{ 'padding-top': '80px' }}>Our best</h3>
-            <Container  style={{ 'padding-bottom': '80px' }}>
+        <div className="ourBest" style={{background: `#ffffff url(${ourBestBg}) no-repeat center`, backgroundSize: 'cover' }}>
+            <h3 className='text-center' style={{ paddingTop: '80px' }}>Our best</h3>
+            <Container  style={{ paddingBottom: '80px' }}>
                 <Row className="justify-content-center align-items-center mt-4" style={{ gap: '40px'}}>
                     {elements}
                 </Row>

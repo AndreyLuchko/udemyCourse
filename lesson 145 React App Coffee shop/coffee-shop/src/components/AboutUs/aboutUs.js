@@ -1,12 +1,12 @@
 import Card from 'react-bootstrap/Card';
+import TitleLogo from '../Title-logo/title-logo';
 
 function About() {
     return (
 
-         <Card className='align-items-center' style={{ 'min-height': 520 }}>
-            <Card.Body className='text-center' style={{ 'max-width': 600 }}>
-                <Card.Title className='mb-3 fs-3'>About Us</Card.Title>
-                <Card.Img src='images/Beans-logo-black.svg' width="230" height="40" alt='Beans logo' />
+         <Card className='align-items-center' style={{ minHeight: 520 }}>
+            <Card.Body className='text-center' style={{ maxWidth: 600 }}>
+                <TitleLogo title='About Us'/>
                 <Card.Text className='mt-3 lh-base'>
                     Extremity sweetness difficult behaviour he of. On disposal of as landlord horrible.
                     Afraid at highly months do things on at. Situation recommend objection do intention

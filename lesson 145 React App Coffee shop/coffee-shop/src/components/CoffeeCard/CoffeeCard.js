@@ -4,10 +4,10 @@ import Card from 'react-bootstrap/Card';
 
 
 const CoffeeCard = (props) => {
-    const { img, title, name, price } = props;
+    const { img, title, name, price, height } = props;
     return (
         <Col md="auto" style={{ width: 'auto'}}>
-            <Card className='rounded' style={{ width: '220px', height: '240px', background: 'rgba(255, 255, 255, 0.65)' }}>
+            <Card className='rounded' style={{ width: '220px', height: `${height}px`, background: 'rgba(255, 255, 255, 0.65)' }}>
                 <Container className='p-3'>
                     <Card.Img
                         className='mx-auto d-block'
