@@ -1,11 +1,11 @@
 import { Component } from 'react';
 import Image from 'react-bootstrap/Image'
 
-import Header from '../../Header/header'
-import Navigation from '../../Navigation/navigation';
-import AboutUs from '../../AboutUs/aboutUs';
-import OurBest from '../../OurBest/ourBest';
-import HeaderBody from '../../HeaderBody/headerBody';
+import Header from '../../header/Header'
+import Navigation from '../../navigation/Navigation';
+import AboutUs from '../../aboutUs/AboutUs';
+import OurBest from '../../ourBest/OurBest';
+import HeaderBody from '../../headerBody/HeaderBody';
 
 import './main.css';
 
@@ -24,15 +24,17 @@ class Main extends Component {
     render() {
         const { data } = this.state;
         return (
-            <main>
-                <Header 
+            <>
+                <Header
                     minHeight='640'
                     title='Everything You Love About Coffee'
                     mainBg='images/Main-bg.jpg'
-                    component={<HeaderBody/>}/>
-                <AboutUs />
-                <OurBest
-                    data={data} />
+                    component={<HeaderBody />} />
+                <main>
+                    <AboutUs />
+                    <OurBest
+                        data={data} />
+                </main>
                 <footer>
                     <Navigation color='text-reset' src='images/logo-black.svg' />
                     <Image
@@ -42,7 +44,7 @@ class Main extends Component {
                         width="230"
                         height="40" />
                 </footer>
-            </main>
+            </>
         );
     }
 }

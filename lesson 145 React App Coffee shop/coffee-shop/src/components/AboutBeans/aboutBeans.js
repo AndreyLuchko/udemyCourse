@@ -1,7 +1,7 @@
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import TitleLogo from '../Title-logo/title-logo';
+import TitleLogo from '../titleLogo/TitleLogo';
 import { Card } from 'react-bootstrap';
 
 function AboutBeans() {

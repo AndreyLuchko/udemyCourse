@@ -6,9 +6,9 @@ import Card from 'react-bootstrap/Card';
 const CoffeeCard = (props) => {
     const { img, title, name, price, height } = props;
     return (
-        <Col md="auto" style={{ width: 'auto'}}>
-            <Card className='rounded' style={{ width: '220px', height: `${height}px`, background: 'rgba(255, 255, 255, 0.65)' }}>
-                <Container className='p-3'>
+        <Col sm={6} md={4} lg={4}  >
+            <Card className='rounded bg-transparent' style={{ height: `${height}px` }}>
+                <Container className='rounded p-3 shadow-lg' style={{ width: '220px', background: 'rgba(255, 255, 255, 0.65)'}}>
                     <Card.Img
                         className='mx-auto d-block'
                         style={{ width: '150px'}}

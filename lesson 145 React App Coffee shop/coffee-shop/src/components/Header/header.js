@@ -1,6 +1,6 @@
 import Card from 'react-bootstrap/Card';
 
-import Navigation from '../Navigation/navigation';
+import Navigation from '../navigation/Navigation';
 
 
 import './header.css'
@@ -11,7 +11,7 @@ function Header(props) {
 
     return (
         <Card 
-            className='bg-image text-white' 
+            className='header bg-image text-white' 
             style={{ minHeight: `${minHeight}px`, background: `#ffffff url(${mainBg}) no-repeat center`}}>
             
             <Navigation color='text-white' src='images/logo.svg' />

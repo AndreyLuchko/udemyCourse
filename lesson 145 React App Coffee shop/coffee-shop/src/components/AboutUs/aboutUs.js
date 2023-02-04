@@ -1,5 +1,5 @@
 import Card from 'react-bootstrap/Card';
-import TitleLogo from '../Title-logo/title-logo';
+import TitleLogo from '../titleLogo/TitleLogo';
 
 function About() {
     return (

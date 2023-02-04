@@ -1,7 +1,7 @@
 import { Row } from 'react-bootstrap';
 
 import Container from 'react-bootstrap/esm/Container';
-import CoffeeCard from '../CoffeeCard/CoffeeCard';
+import CoffeeCard from '../coffeeCard/CoffeeCard';
 
 const OurBest = ({data}) => {
 
@@ -18,8 +18,8 @@ const OurBest = ({data}) => {
     return (
         <div className="ourBest" style={{background: `#ffffff url(${ourBestBg}) no-repeat center`, backgroundSize: 'cover' }}>
             <h3 className='text-center' style={{ paddingTop: '80px' }}>Our best</h3>
-            <Container  style={{ paddingBottom: '80px' }}>
-                <Row className="justify-content-center align-items-center mt-4" style={{ gap: '40px'}}>
+            <Container  style={{ paddingBottom: '80px', maxWidth: '850px' }}>
+                <Row className="justify-content-center align-items-center mt-4" >
                     {elements}
                 </Row>
             </Container>
