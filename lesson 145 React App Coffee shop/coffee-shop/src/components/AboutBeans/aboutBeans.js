@@ -4,19 +4,20 @@ import Col from 'react-bootstrap/Col';
 import TitleLogo from '../titleLogo/TitleLogo';
 import { Card } from 'react-bootstrap';
 
-function AboutBeans() {
+function AboutBeans({src, alt, titleLogo, className, text1, text2, text3}) {
     return (
         <Container className='mt-4'>
             <Row className="justify-content-center align-items-center">
-                <Col lg={4} className='text-center'>
-                    <img src="images/Girl-coffee.png" alt="Girl with coffee cup" />
-                </Col>
-                <Col lg={4}>
-                    <TitleLogo title='About our beans'/>
+                <Col xxl={4} xl={5} lg={6}  className='text-center'>
+                    <img src={src} alt={alt} />
+                </Col> 
+                <Col  xxl={4} xl={5} lg={6} >
+                    <TitleLogo title={titleLogo}/>
                     <Card>
-                        <Card.Body className='text-center'>
-                            <Card.Text>Extremity sweetness difficult behaviour he of. On disposal of as landlord horrible.</Card.Text>
-                            <Card.Text>Afraid at highly months do things on at. Situation recommend objection do intention so questions. As greatly removed calling pleased improve an. Last ask him cold feelmet spot shy want. Children me laughing we prospect answered followed. At it wentis song that held help face.</Card.Text>
+                        <Card.Body className={className}>
+                            <Card.Text>{text1}</Card.Text>
+                            <Card.Text>{text2}</Card.Text>
+                            <Card.Text>{text3}</Card.Text>
                         </Card.Body>
                     </Card>
                 </Col>

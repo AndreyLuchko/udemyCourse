@@ -1,11 +1,13 @@
 
 // import Main from "../Pages/main/Main";
-import Coffee from "../Pages/coffee/Coffee";
+// import Coffee from "../Pages/coffee/Coffee";
+import CoffeeItem from "../Pages/coffeeItem/CoffeeItem";
 
 function App () {
     return (
       <div className="App">
-        <Coffee/>
+        <CoffeeItem/>
+        {/* <Coffee/> */}
         {/* <Main/> */}
       </div>
     );

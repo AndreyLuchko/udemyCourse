@@ -11,6 +11,8 @@ import './coffee.css'
 class Coffee extends Component {
     constructor(props) {
         super(props)
+        this.text1 = 'Extremity sweetness difficult behaviour he of. On disposal of as landlord horrible.'
+        this.text2 = 'Afraid at highly months do things on at. Situation recommend objection do intention so questions. As greatly removed calling pleased improve an. Last ask him cold feelmet spot shy want. Children me laughing we prospect answered followed. At it wentis song that held help face.'
         this.state = {
             data: [
                 { img: 'images/Presto.png', title: 'Presto Coffee Beans 1 kg', name: 'Brazil', price: 15.99, height: 260, id: 1 },
@@ -20,40 +22,64 @@ class Coffee extends Component {
                 { img: 'images/Solimo.png', title: 'Solimo Coffee Beans 2 kg', name: 'Brazil', price: 10.73, height: 260, id: 5 },
                 { img: 'images/Aromistico.png', title: 'AROMISTICO Coffee 1 kg', name: 'Brazil', price: 6.99, height: 260, id: 6 }
             ],
-            term: ''
+            term: '',
+            sortArr: []
         }
     }
 
-    searchCof = (arr, term) => {
-       if(term.length === 0) {
-        return arr;
-       }  
+    filterCof = (arr, sortArr) => {
+        let res = [];
+        if (sortArr.length === 0) {
+            return arr;
+        }
+        sortArr.forEach(name => {
+            res.push(...arr.filter(item => item.name === name))
+        })
+        return res;
+    }
 
-       return arr.filter(item => {
-        return item.title.indexOf(term) > -1
-       })
+    onUpdateFilter = (sortArr) => {
+        this.setState({ sortArr: sortArr })
+    }
+
+    searchCof = (arr, term) => {
+        if (term.length === 0) {
+            return arr;
+        }
+
+        return arr.filter(item => {
+            return item.title.indexOf(term) > -1
+        })
     }
 
     onUpdateSearch = (term) => {
-        this.setState({term: term})
+        this.setState({ term: term })
     }
 
     render() {
-        const { data, term } = this.state;
-        const visibleData = this.searchCof(data, term);
+        const { data, term, sortArr } = this.state,
+            visibleData = this.searchCof(this.filterCof(data, sortArr), term);
 
         return (
             <>
                 <Header
                     minHeight='260'
                     title='Our Coffee'
-                    mainBg='images/Coffee-bg.jpg'
-                />
+                    mainBg='images/Coffee-bg.jpg' />
                 <main>
-                    <AboutBeans />
+                    <AboutBeans
+                        src='images/Girl-coffee.png'
+                        alt='Girl with coffee cup'
+                        titleLogo='About our beans'
+                        text1={this.text1}
+                        text2={this.text2}
+                        className='text-center' />
                     <hr style={{ width: 240, margin: '40px auto', borderTop: '2px solid #000000' }} />
                     <section className="search-block mt-4 mx-auto" style={{ maxWidth: '850px' }} >
-                        <SearchBlock onUpdateSearch={this.onUpdateSearch}/>
+                        <SearchBlock
+                            onUpdateSearch={this.onUpdateSearch}
+                            onUpdateFilter={this.onUpdateFilter}
+                            sortArr={sortArr} />
                     </section>
                     <CoffeeList
                         data={visibleData} />
@@ -68,8 +94,6 @@ class Coffee extends Component {
                         height="40" />
                 </footer>
             </>
-
-
         );
     }
 }

@@ -1,19 +1,17 @@
 import { Component } from 'react';
 
-
-
 class SearchPanel extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            term: ''
+            termlocal: ''
         }
     }
 
     onUpdateInputValue = (e) => {
-        const term = e.target.value;
-        this.setState({term: term});
-        this.props.onUpdateSearch(term)
+        const newterm = e.target.value;
+        this.setState({termlocal: newterm});
+        this.props.onUpdateSearch(newterm)
     }
 
     render() {
@@ -30,7 +28,7 @@ class SearchPanel extends Component {
                             boxShadow: '4px 4px 20px rgba(0, 0, 0, 0.25)',
                             borderRadius: '4px'
                         }}
-                        value={this.state.term}
+                        value={this.state.termlocal}
                         onChange={this.onUpdateInputValue} />
                 </label>
 
