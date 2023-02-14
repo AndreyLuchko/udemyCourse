@@ -1,13 +1,16 @@
 import { Component } from 'react';
+import Spinner from '../spinner/Spinner';
+import ErrorMessage from '../errorMessage/ErrorMessage';
 import MarvelService from '../../services/MarvelService';
 import CharItem from '../charItem/CharItem';
 
 import './charList.scss';
 
-
 class CharList extends Component {
     state = {
-        results: []
+        charList: [],
+        loading: true,
+        error: false
     }
 
     marvelService = new MarvelService();
@@ -16,41 +19,66 @@ class CharList extends Component {
         this.updateAllChar();
     }
 
-    onCharsLoaded = (results) => {
-        this.setState({ results })
-    }
-
     updateAllChar = () => {
         this.marvelService
             .getAllCharacters()
-            .then(this.onCharsLoaded)
+            .then(this.onCharListLoaded)
             .catch(this.onError)
     }
 
-    render() {
-        const {results} = this.state;
-        const elements = results.map(item => {
-            const {name, thumbnail} = item;
+    onCharListLoaded = (charList) => {
+        this.setState({
+            charList,
+            loading: false
+        })
+    }
+
+    onError = () => {
+        this.setState({
+            error: true,
+            loading: false
+        })
+    }
+
+    renderItems(arr) {
+
+        const elements = arr.map(item => {
+            const { id, name, thumbnail } = item;
             return (
                 <CharItem
-                    key={name}
+                    key={id}
                     thumbnail={thumbnail}
-                    name={name}/>
+                    name={name}
+                    onCharSelected={() => this.props.onCharSelected(id)} />
             )
-        })
+        });
+
+        return (
+            <ul className="char__grid">
+                {elements}
+            </ul>
+        )
+    }
+
+    render() {
+        const { charList, loading, error } = this.state;
+        const items = this.renderItems(charList);
+
+        const errorMessage = error ? <ErrorMessage/> : null;
+        const spinner = loading ? <Spinner/> : null;
+        const content = !(loading || error) ? items : null;
 
         return (
             <div className="char__list">
-                <ul className="char__grid">
-                   {elements}
-                </ul>
+                {errorMessage}
+                {spinner}
+                {content}
                 <button className="button button__main button__long">
                     <div className="inner">load more</div>
                 </button>
             </div>
         )
     }
-
 }
 
 export default CharList;
