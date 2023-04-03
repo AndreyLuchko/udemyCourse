@@ -1,4 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
+import { CSSTransition, TransitionGroup } from 'react-transition-group';
+
 import PropTypes from 'prop-types';
 
 import Spinner from '../spinner/Spinner';
@@ -21,8 +23,8 @@ const CharList = (props) => {
     }, [])
 
     const onRequest = (offset, initial) => {
-        initial ?  setNewItemLoading(false) : setNewItemLoading(true);
-       
+        initial ? setNewItemLoading(false) : setNewItemLoading(true);
+
         getAllCharacters(offset)
             .then(onCharListLoaded)
     }
@@ -56,30 +58,38 @@ const CharList = (props) => {
             const style = thumbnail === path ? { objectFit: 'unset' } : null;
 
             return (
-                <li
-                    className="char__item"
+                <CSSTransition
                     key={id}
-                    tabIndex='0'
-                    ref={el => itemsRefs.current[i] = el}
-                    onClick={() => {
-                        props.onCharSelected(id);
-                        focusOnItem(i);
-                    }}
-                    onKeyDown={(e) => {
-                        if (e.key === 'Enter' || e.key === ' ') {
+                    timeout={500}
+                    classNames={'item'}
+                >
+                    <li
+                        className="char__item"
+                        key={id}
+                        tabIndex='0'
+                        ref={el => itemsRefs.current[i] = el}
+                        onClick={() => {
                             props.onCharSelected(id);
                             focusOnItem(i);
-                        }
-                    }}>
-                    <img src={thumbnail} alt={name} style={style} />
-                    <div className="char__name">{name}</div>
-                </li>
+                        }}
+                        onKeyDown={(e) => {
+                            if (e.key === 'Enter' || e.key === ' ') {
+                                props.onCharSelected(id);
+                                focusOnItem(i);
+                            }
+                        }}>
+                        <img src={thumbnail} alt={name} style={style} />
+                        <div className="char__name">{name}</div>
+                    </li>
+                </CSSTransition>
             )
         });
 
         return (
             <ul className="char__grid">
-                {elements}
+                <TransitionGroup component={null}>
+                    {elements}
+                </TransitionGroup>
             </ul>
         )
     }
