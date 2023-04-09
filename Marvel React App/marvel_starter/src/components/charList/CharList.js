@@ -29,7 +29,7 @@ const CharList = (props) => {
             .then(onCharListLoaded)
     }
 
-    const onCharListLoaded = (newCharList) => {
+    const onCharListLoaded = async (newCharList) => {
         let ended = false;
         if (newCharList.length < 9) {
             ended = true;
@@ -65,7 +65,7 @@ const CharList = (props) => {
                 >
                     <li
                         className="char__item"
-                        key={id}
+                        // key={id}
                         tabIndex='0'
                         ref={el => itemsRefs.current[i] = el}
                         onClick={() => {
