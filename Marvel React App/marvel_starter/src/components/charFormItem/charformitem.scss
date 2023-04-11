@@ -6,13 +6,20 @@
         position: relative;
         z-index: 5;
         background-color: #fff;
+        font-style: normal;
+        font-weight: 700;
+        font-size: 18px;
+        line-height: 21px;
 
         &-item {
-            display: block;
-            font-style: normal;
-            font-weight: 700;
-            font-size: 18px;
-            line-height: 21px;
+            margin-top: 15px;
+            display: flex;
+            color: #9F0013;
+
+            &-name {
+                min-width: 250px;
+                color: #03710E;
+            }
         }
 
         &-input {
@@ -40,10 +47,6 @@
 
         &-error {
             margin-top: 25px;
-            font-style: normal;
-            font-weight: 700;
-            font-size: 18px;
-            line-height: 21px;
             color: #9F0013;
         }
 

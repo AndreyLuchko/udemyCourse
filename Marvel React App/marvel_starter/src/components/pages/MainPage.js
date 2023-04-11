@@ -28,7 +28,10 @@ const MainPage = () => {
                     <ErrorBoundary>
                         <CharInfo charId={selectedChar} />
                     </ErrorBoundary>
-                    <CharFormItem/>
+                    <ErrorBoundary>
+                        <CharFormItem/>
+                    </ErrorBoundary>
+                    
                 </div>
 
             </div>
