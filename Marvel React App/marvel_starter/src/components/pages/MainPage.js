@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Helmet, HelmetProvider } from 'react-helmet-async';
 
 import RandomChar from "../randomChar/RandomChar";
 import CharList from "../charList/CharList";
@@ -16,7 +17,14 @@ const MainPage = () => {
     }
 
     return (
-        <>
+        <HelmetProvider>
+            <Helmet>
+                <meta
+                    name="description"
+                    content="Marvel information portal"
+                />
+                <title>Marvel information portal</title>
+            </Helmet>
             <ErrorBoundary>
                 <RandomChar />
             </ErrorBoundary>
@@ -29,14 +37,12 @@ const MainPage = () => {
                         <CharInfo charId={selectedChar} />
                     </ErrorBoundary>
                     <ErrorBoundary>
-                        <CharFormItem/>
+                        <CharFormItem />
                     </ErrorBoundary>
-                    
                 </div>
-
             </div>
             <img className="bg-decoration" src={decoration} alt="vision" />
-        </>
+        </HelmetProvider>
     )
 }
 
