@@ -6,7 +6,7 @@
 // Изменять json-файл для удобства МОЖНО!
 // Представьте, что вы попросили бэкенд-разработчика об этом
 
-import { filterSelected, filtersFetched, filtersFetching, filtersFetchingError } from '../../actions';
+import { filterSelected, fetchFilters } from '../../actions';
 import { useHttp } from '../../hooks/http.hook';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
@@ -20,14 +20,12 @@ const HeroesFilters = () => {
     const { request } = useHttp();
 
     useEffect(() => {
-        dispatch(filtersFetching())
-        request("http://localhost:3001/filters")
-            .then(data => dispatch(filtersFetched(data)))
-            .catch(() => dispatch(filtersFetchingError()))
+        dispatch(fetchFilters(request))
+        // eslint-disable-next-line
     }, []);
 
     if (filtersLoadingStatus === "loading") {
-        return <Spinner/>;
+        return <Spinner />;
     } else if (filtersLoadingStatus === "error") {
         return <h5 className="text-center mt-5">Ошибка загрузки</h5>
     }
@@ -41,19 +39,17 @@ const HeroesFilters = () => {
                 className={clazz}
                 key={name}
                 onClick={() => dispatch(filterSelected(name))}>
-                    {label}
+                {label}
             </button>
         )
-
     })
-
 
     return (
         <div className="card shadow-lg mt-4">
             <div className="card-body">
                 <p className="card-text">Отфильтруйте героев по элементам</p>
                 <div className="btn-group">
-                  {buttons}
+                    {buttons}
                 </div>
             </div>
         </div>
