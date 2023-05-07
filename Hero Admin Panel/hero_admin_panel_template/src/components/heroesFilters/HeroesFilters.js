@@ -6,7 +6,8 @@
 // Изменять json-файл для удобства МОЖНО!
 // Представьте, что вы попросили бэкенд-разработчика об этом
 
-import { filterSelected, fetchFilters } from '../../actions';
+import { fetchFilters } from '../../actions';
+import { filterSelected } from './filtersSlice';
 import { useHttp } from '../../hooks/http.hook';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';

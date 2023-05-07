@@ -3,7 +3,8 @@ import { useCallback, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import { createSelector } from 'reselect'
-import { fetchHeroes, deleteItem } from '../../actions';
+import { fetchHeroes } from '../../actions';
+import { deleteItem } from './heroesSlice';
 import HeroesListItem from "../heroesListItem/HeroesListItem";
 import Spinner from '../spinner/Spinner';
 
@@ -21,7 +22,6 @@ const HeroesList = () => {
         (state) => state.heroes.heroes,
         (filter, heroes) => {
             if (filter === 'all') {
-                console.log('All');
                 return heroes;
             } else {
                 return heroes.filter(item => item.element === filter)
@@ -30,15 +30,6 @@ const HeroesList = () => {
     )
 
     const heroesFiltered = useSelector(filteredHeroesSelector)
-
-    // const heroesFiltered = useSelector(state => {
-    //     if (state.filters.activeFilter === 'all') {
-    //         console.log('All');
-    //         return state.heroes.heroes;
-    //     } else {
-    //         return state.heroes.heroes.filter(item => item.element === state.filters.activeFilter)
-    //     }
-    // })
     const heroesLoadingStatus  = useSelector(state => state.heroes.heroesLoadingStatus);
     const dispatch = useDispatch();
     const { request } = useHttp();
@@ -53,6 +44,7 @@ const HeroesList = () => {
             .then(data => console.log(data, 'Deleted'))
             .then(dispatch(deleteItem(id)))
             .catch(error => console.log(error))
+            // eslint-disable-next-line
     }, [request])
 
     if (heroesLoadingStatus === "loading") {
