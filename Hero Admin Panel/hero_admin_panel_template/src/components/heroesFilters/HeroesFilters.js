@@ -6,9 +6,8 @@
 // Изменять json-файл для удобства МОЖНО!
 // Представьте, что вы попросили бэкенд-разработчика об этом
 
-import { fetchFilters } from '../../actions';
-import { filterSelected } from './filtersSlice';
-import { useHttp } from '../../hooks/http.hook';
+
+import { filterSelected, fetchFilters } from './filtersSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import Spinner from '../spinner/Spinner';
@@ -18,10 +17,9 @@ import classNames from 'classnames';
 const HeroesFilters = () => {
     const { filters, activeFilter, filtersLoadingStatus } = useSelector(state => state.filters);
     const dispatch = useDispatch();
-    const { request } = useHttp();
 
     useEffect(() => {
-        dispatch(fetchFilters(request))
+        dispatch(fetchFilters())
         // eslint-disable-next-line
     }, []);
 

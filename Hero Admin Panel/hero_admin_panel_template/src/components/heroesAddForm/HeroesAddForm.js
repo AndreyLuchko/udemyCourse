@@ -13,7 +13,7 @@
 import { useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import { useDispatch, useSelector } from 'react-redux';
-import { addItem } from '../heroesList/heroesSlice';
+import { addHero } from '../heroesList/heroesSlice';
 import { useHttp } from '../../hooks/http.hook';
 
 const HeroesAddForm = () => {
@@ -40,7 +40,7 @@ const HeroesAddForm = () => {
     const onAdd = (formState) => {
         request(`http://localhost:3001/heroes`, 'POST', JSON.stringify(formState))
             .then(data => console.log(data, 'Posted successfully'))
-            .then(dispatch(addItem(formState)))
+            .then(dispatch(addHero(formState)))
             .catch(error => console.log(error))
     }
 
